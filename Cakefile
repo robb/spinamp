@@ -26,24 +26,37 @@ compile = (dir, watch = off) ->
 
   mkdirp.sync dir.replace sourceDir, targetDir
 
-  files.forEach (file) ->
-    switch path.extname file
-      when '.coffee' then apply compileCoffee, file, watch
-      when '.eco'    then apply compileEco,    file, watch
-      when '.jade'   then apply compileJade,   file, watch
-      when '.less'   then apply compileLess,   file, watch
-      else
-        apply copy, file, watch
+  files?.forEach (file) ->
+    try
+      switch path.extname file
+        when '.coffee' then apply compileCoffee, file, watch
+        when '.eco'    then apply compileEco,    file, watch
+        when '.jade'   then apply compileJade,   file, watch
+        when '.less'   then apply compileLess,   file, watch
+        else
+          apply copy, file, watch
+    catch e
+      log e, 'error'
 
   dirs?.map (dir) -> compile dir, watch
+
+wait = (milliseconds, f) -> setTimeout f, milliseconds
 
 apply = (f, file, watch = off) ->
   f file
 
   if watch
     log "Watching #{file}", 'yellow'
-    fs.watchFile file, (curr, prev) ->
-      f file if +curr.mtime isnt +prev.mtim
+    try
+      watcher = fs.watch file, callback = (event) ->
+        if event in ['change', 'rename']
+          watcher.close()
+          wait 500, ->
+            f file
+            try
+              watcher = fs.watch file, callback
+            catch error
+    catch error
 
 compileCoffee = (file) ->
   log "Compiling #{file}"
@@ -51,7 +64,10 @@ compileCoffee = (file) ->
   outputFile = file.replace(sourceDir, targetDir).replace /\.coffee$/, '.js'
   javaScript = fs.readFileSync file, 'utf8'
 
-  fs.writeFileSync outputFile, coffee.compile javaScript
+  try
+    fs.writeFileSync outputFile, coffee.compile javaScript
+  catch error
+    log error.toString(), 'red'
 
 compileEco = (file) ->
   log "Compiling #{file}"

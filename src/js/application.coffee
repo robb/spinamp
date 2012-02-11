@@ -1,1 +1,3 @@
-alert 'Initial commit!'
+window.LOG = (string) -> console.log string
+
+window.Spinamp ?= {}
