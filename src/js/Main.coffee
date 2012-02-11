@@ -1,3 +1,3 @@
 $ ->
-  new Spinamp.Skin 'default', ->
-    LOG 'Skin loaded'
+  new Spinamp.MainWindow $('#main')
+

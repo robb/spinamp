@@ -11,6 +11,28 @@ html
     script(type = 'text/javascript', src = 'sp://spinamp/vendor/jquery-1.7.1.min.js')
     script(type = 'text/javascript', src = 'sp://spinamp/js/Application.js')
     script(type = 'text/javascript', src = 'sp://spinamp/js/Skin.js')
+    script(type = 'text/javascript', src = 'sp://spinamp/js/Button.js')
+    script(type = 'text/javascript', src = 'sp://spinamp/js/MainWindow.js')
     script(type = 'text/javascript', src = 'sp://spinamp/js/Main.js')
+
   body
     h1 Spotify Test
+    #main.window
+      .buttons
+        a#back.button(alt = "Back")
+          span Back
+        a#play.button(alt = "Play")
+          span Play
+        a#pause.button(alt = "Pause")
+          span Pause
+        a#stop.button(alt = "Stop")
+          span Stop
+        a#next.button(alt = "Next")
+          span Next
+        a#eject.button(alt = "Eject")
+          span Eject
+        a#shuffle.button(alt = "Shuffle")
+          span Shuffle
+        a#repeat.button(alt = "Repeat")
+          span Repeat
+
