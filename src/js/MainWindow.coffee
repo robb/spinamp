@@ -46,8 +46,9 @@ class Spinamp.MainWindow
       Spinamp.Spotify.TrackPlayer.addEventListener 'playerAudioLevelsChanged', (event) =>
         @spectrogram.draw event.data
 
-      # Set up progress bar
+      # Set up progress bar & time view
       @progressBar = new Spinamp.PositionBar @el.find('#progress-bar'), @skin
+      @timeView    = new Spinamp.TimeView    @el.find('#time-view'),    @skin
 
       # Poll player position
       pollPosition = =>
@@ -57,6 +58,7 @@ class Spinamp.MainWindow
           duration = Spinamp.Spotify.Player.track.duration
           position = Spinamp.Spotify.Player.position
 
+          @timeView.position    = position
           @progressBar.position = position / duration
 
         setTimeout pollPosition, 1000 / 120

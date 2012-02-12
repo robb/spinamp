@@ -115,3 +115,50 @@ class Spinamp.Skin
         knob_highlighted:
           origin: [277,  0]
           size:   [ 30, 10]
+
+    numbers:
+      file: 'Numbers.gif'
+      components:
+        '0':
+          origin: [ 0,  0]
+          size:   [ 9, 13]
+
+        '1':
+          origin: [ 9,  0]
+          size:   [ 9, 13]
+
+        '2':
+          origin: [18,  0]
+          size:   [ 9, 13]
+
+        '3':
+          origin: [27,  0]
+          size:   [ 9, 13]
+
+        '4':
+          origin: [36,  0]
+          size:   [ 9, 13]
+
+        '5':
+          origin: [45,  0]
+          size:   [ 9, 13]
+
+        '6':
+          origin: [54,  0]
+          size:   [ 9, 13]
+
+        '7':
+          origin: [63,  0]
+          size:   [ 9, 13]
+
+        '8':
+          origin: [72,  0]
+          size:   [ 9, 13]
+
+        '9':
+          origin: [81,  0]
+          size:   [ 9, 13]
+
+        blank:
+          origin: [90,  0]
+          size:   [ 9, 13]
