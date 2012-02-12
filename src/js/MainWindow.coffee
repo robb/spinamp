@@ -34,6 +34,16 @@ class Spinamp.MainWindow
       @timeView    = new Spinamp.TimeView    @el.find('#time-view'),    @skin
       @titleView   = new Spinamp.TextView @el.find('#title')
 
+      @kbpsLabel        = new Spinamp.TextView @el.find('#kbps')
+      @kbpsLabel.size   = {width: 20, height: 11}
+      @kbpsLabel.origin = {x: 110, y: 41}
+      @kbpsLabel.text   = '192'
+
+      @khzLabel        = new Spinamp.TextView @el.find('#khz')
+      @khzLabel.size   = {width: 20, height: 11}
+      @khzLabel.origin = {x: 155, y: 41}
+      @khzLabel.text   = '44'
+
       # Layout everything
       @back.size = @play.size = @pause.size = @stop.size = {width: 23, height: 18}
       @next.size = {width: 22, height: 18}
