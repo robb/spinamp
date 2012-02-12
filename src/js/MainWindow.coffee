@@ -103,33 +103,3 @@ class Spinamp.MainWindow
 
     @repeat.onclick = =>
       Spinamp.Spotify.Player.repeat = !Spinamp.Spotify.Player.repeat
-
-    # Overserve FFT event
-    Spinamp.Spotify.TrackPlayer.addEventListener 'playerAudioLevelsChanged', (event) =>
-      @spectrogram.draw event.data
-
-    # Poll player position
-    pollPosition = =>
-      unless Spinamp.Spotify.Player.track
-        @progressBar.position = undefined
-      else
-        duration = Spinamp.Spotify.Player.track.duration
-        position = Spinamp.Spotify.Player.position
-
-        @timeView.position    = position
-        @progressBar.position = position / duration
-
-      setTimeout pollPosition, 1000 / 120
-    pollPosition()
-
-    Spinamp.Spotify.Player.observe Spinamp.Spotify.ChangeEvent, updatePlayer = =>
-      track = Spinamp.Spotify.Player.track
-
-      @spectrogram.draw() unless track
-
-      @repeat.state  = Spinamp.Spotify.Player.repeat
-      @shuffle.state = Spinamp.Spotify.Player.shuffle
-
-      @titleView.text = "#{track.artists[0].name} - #{track.name}"
-
-    updatePlayer()

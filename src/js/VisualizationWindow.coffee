@@ -91,6 +91,17 @@ class Spinamp.VisualizationWindow
     @draw()
 
   draw: (data) ->
+    @context.fillStyle = 'black'
     @context.fillRect 0, 0, @canvas.width, @canvas.height
+
+    return unless data?
+
+    x = @canvas.width
+    y = @canvas.height
+
+    while x--
+      while y--
+        @context.fillStyle = data.left_levels[x]
+        @context.fillRect x, y, 1, 1
 
     @el.css 'backgroundImage', 'url(' + @canvas.toDataURL() + ')'
