@@ -18,5 +18,6 @@ class Spinamp.Button
       @state = on
 
     @el.bind 'mouseup', =>
+
       @state = off
-      @onlick?()
+      @onclick?()

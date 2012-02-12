@@ -101,3 +101,17 @@ class Spinamp.Skin
           origin: [114, 16]
           size:   [ 22, 16]
 
+    posbar:
+      file: 'Posbar.gif'
+      components:
+        bar:
+          origin: [  0,  0]
+          size:   [249, 10]
+
+        knob:
+          origin: [249,  0]
+          size:   [ 30, 10]
+
+        knob_highlighted:
+          origin: [277,  0]
+          size:   [ 30, 10]

@@ -12,12 +12,17 @@ html
     script(type = 'text/javascript', src = 'sp://spinamp/js/Application.js')
     script(type = 'text/javascript', src = 'sp://spinamp/js/Skin.js')
     script(type = 'text/javascript', src = 'sp://spinamp/js/Button.js')
+    script(type = 'text/javascript', src = 'sp://spinamp/js/PositionBar.js')
     script(type = 'text/javascript', src = 'sp://spinamp/js/MainWindow.js')
+    script(type = 'text/javascript', src = 'sp://spinamp/js/Spotify.js')
     script(type = 'text/javascript', src = 'sp://spinamp/js/Main.js')
 
   body
-    h1 Spotify Test
+    h1 SpinAmp
     #main.window
+      #progress-bar
+        #knob
+
       .buttons
         a#back.button(alt = "Back")
           span Back
