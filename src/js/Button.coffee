@@ -1,23 +1,37 @@
 class Spinamp.Button
   constructor: (@el, @skin, name) ->
-    state = off
+    down = no
 
-    Object.defineProperty this, 'state',
-      get: -> state
-      set: (newState) ->
-        if state = newState
+    Object.defineProperty this, 'down',
+      get: -> down
+      set: (pressed) ->
+        if down = pressed
           @el.css 'backgroundImage',
                   'url(' + @skin.get('buttons', "#{name}_highlighted").toDataURL() + ')'
         else
           @el.css 'backgroundImage',
                   'url(' + @skin.get('buttons', name).toDataURL() + ')'
 
-    @state = off
+    @down = no
+
+    # Set up mouse events
+    resetButton = =>
+        $('body').unbind 'mouseup', resetButton
+
+        @down = no
+        off
 
     @el.bind 'mousedown', =>
-      @state = on
+      $(document).bind 'mouseup', resetButton
+
+      @down = yes
+      off
 
     @el.bind 'mouseup', =>
+      $(document).unbind 'mouseup', resetButton
 
-      @state = off
+      @down = no
+
       @onclick?()
+
+      off

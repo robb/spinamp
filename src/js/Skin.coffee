@@ -162,3 +162,38 @@ class Spinamp.Skin
         blank:
           origin: [90,  0]
           size:   [ 9, 13]
+
+    shufflerep:
+      file: 'Shufrep.gif'
+      components:
+        repeat_up_off:
+          origin: [ 0,  0]
+          size:   [28, 15]
+
+        repeat_down_off:
+          origin: [ 0, 15]
+          size:   [28, 15]
+
+        repeat_up_on:
+          origin: [ 0, 30]
+          size:   [28, 15]
+
+        repeat_down_on:
+          origin: [ 0, 45]
+          size:   [28, 15]
+
+        shuffle_up_off:
+          origin: [28,  0]
+          size:   [47, 15]
+
+        shuffle_down_off:
+          origin: [28, 15]
+          size:   [47, 15]
+
+        shuffle_up_on:
+          origin: [28, 30]
+          size:   [47, 15]
+
+        shuffle_down_on:
+          origin: [28, 45]
+          size:   [47, 15]

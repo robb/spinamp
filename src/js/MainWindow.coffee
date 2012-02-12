@@ -9,15 +9,19 @@ class Spinamp.MainWindow
         backgroundImage: 'url(' + @skin.get('main', 'window').toDataURL() + ')'
 
       # Load buttons
-      @back  = new Spinamp.Button @el.find('#back'),    @skin, 'back'
-      @play  = new Spinamp.Button @el.find('#play'),    @skin, 'play'
-      @pause = new Spinamp.Button @el.find('#pause'),   @skin, 'pause'
-      @stop  = new Spinamp.Button @el.find('#stop'),    @skin, 'stop'
-      @next  = new Spinamp.Button @el.find('#next'),    @skin, 'next'
-      @eject = new Spinamp.Button @el.find('#eject'),   @skin, 'eject'
+      @back  = new Spinamp.Button @el.find('#back'),  @skin, 'back'
+      @play  = new Spinamp.Button @el.find('#play'),  @skin, 'play'
+      @pause = new Spinamp.Button @el.find('#pause'), @skin, 'pause'
+      @stop  = new Spinamp.Button @el.find('#stop'),  @skin, 'stop'
+      @next  = new Spinamp.Button @el.find('#next'),  @skin, 'next'
+      @eject = new Spinamp.Button @el.find('#eject'), @skin, 'eject'
 
-      # @shuffle = new Spinamp.Button @el.find('shuffle'), @skin, 'shuffle'
-      # @repeat  = new Spinamp.Button @el.find('repeat'),  @skin, 'repeat'
+      # Set up the shuffle and repeat button
+      @shuffle = new Spinamp.ToggleButton @el.find('#shuffle'), @skin, 'shuffle'
+      @shuffle.state = Spinamp.Spotify.Player.shuffle
+
+      @repeat  = new Spinamp.ToggleButton @el.find('#repeat'),  @skin, 'repeat'
+      @repeat.state = Spinamp.Spotify.Player.repeat
 
       # Set events handlers for buttons
       @back.onclick = =>
@@ -38,6 +42,12 @@ class Spinamp.MainWindow
 
       @next.onclick = =>
         Spinamp.Spotify.Player.next()
+
+      @shuffle.onclick = =>
+        Spinamp.Spotify.Player.shuffle = !Spinamp.Spotify.Player.shuffle
+
+      @repeat.onclick = =>
+        Spinamp.Spotify.Player.repeat = !Spinamp.Spotify.Player.repeat
 
       # Set up the spectrogram
       @spectrogram = new Spinamp.SpectrogramView @el.find('#spectrogram'), @skin
@@ -68,9 +78,15 @@ class Spinamp.MainWindow
       @titleView = new Spinamp.TextView @el.find('#title')
 
       Spinamp.Spotify.Player.observe Spinamp.Spotify.ChangeEvent, updatePlayer = =>
-        @spectrogram.draw()
-
         track = Spinamp.Spotify.Player.track
+
+        @spectrogram.draw() unless track
+
+        @repeat.state  = Spinamp.Spotify.Player.repeat
+        @shuffle.state = Spinamp.Spotify.Player.shuffle
+
+
+
         @titleView.text = "#{track.artists[0].name} - #{track.name}"
 
       updatePlayer()
