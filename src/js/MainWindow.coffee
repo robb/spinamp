@@ -39,7 +39,7 @@ class Spinamp.MainWindow
       @next.onclick = =>
         Spinamp.Spotify.Player.next()
 
-      # Set up progress bar
+      # Set up the spectrogram
       @spectrogram = new Spinamp.SpectrogramView @el.find('#spectrogram'), @skin
 
       # Overserve FFT event
@@ -62,6 +62,11 @@ class Spinamp.MainWindow
         setTimeout pollPosition, 1000 / 120
       pollPosition()
 
+      # Set up the title text view
+      @titleView = new Spinamp.TextView @el.find('#title')
 
+      Spinamp.Spotify.Player.observe Spinamp.Spotify.ChangeEvent, updateTitle = =>
+        track = Spinamp.Spotify.Player.track
+        @titleView.text = "#{track.artists[0].name} - #{track.name}"
 
-
+      updateTitle()
