@@ -45,7 +45,7 @@ class Spinamp.SpectrogramView
     for i in [0..18] by 1
       level = levels.left_levels[i * 13]
 
-      barHeight = ~~(15 * level)
+      barHeight = ~~(15 * Math.sqrt(Math.sqrt(level)))
 
       @context.drawImage @gradient,
                          0,     15 - barHeight, 3, barHeight,
