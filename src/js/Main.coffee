@@ -51,5 +51,20 @@ $ ->
         $(document).unbind 'mousemove', moveWindow
         $(document).unbind 'mouseup',   releaseWindow
 
+  currentTime = new Date()
+  hours = currentTime.getHours()
+  minutes = currentTime.getMinutes()
+
+  if minutes < 10
+    minutes = "0" + minutes
+
+  if hours > 11
+    $('#clock').text "#{hours}:#{minutes} PM"
+  else
+    $('#clock').text "#{hours}:#{minutes} AM"
+
+  $('#startMenu').click ->
+    $('#blueScreen').css display: 'block'
+    Spinamp.Spotify.Player.playing = no
 
   console.log Spinamp

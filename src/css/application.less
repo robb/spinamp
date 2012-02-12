@@ -1,6 +1,13 @@
-html, body {
-  background: white;
-  color: black;
+html {
+  background: #017F7F;
+  background-image: url(sp://spinamp/img/Clouds.jpeg);
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+}
+
+body {
+  background: none;
 }
 
 .window {
@@ -35,4 +42,73 @@ html, body {
 
 .button span {
   display: none;
+}
+
+#startMenu {
+  position: absolute;
+
+  height: 28px;
+  bottom: 0;
+  left:   0;
+  right:  0;
+
+  background-image: url(sp://spinamp/img/menu-pattern.png);
+}
+
+#icons {
+  position: absolute;
+  top:  0px;
+  left: 0px;
+
+  width: 99px;
+  height: 429px;
+
+  background-image: url(sp://spinamp/img/icons.png);
+}
+
+#startButton {
+  position: absolute;
+
+  width:  54px;
+  height: 22px;
+
+  top:  4px;
+  left: 2px;
+
+  background-image: url(sp://spinamp/img/start-button.png);
+}
+
+#clock {
+  position: absolute;
+
+  width:  64px;
+  height: 22px;
+
+  top:   4px;
+  right: 2px;
+
+  font-size: 12px;
+
+  padding-top: 4px;
+
+  background-image: url(sp://spinamp/img/clock.png);
+  text-align: center;
+  font-family: Arial;
+
+  -webkit-font-smoothing: none;
+}
+
+#blueScreen {
+  position: absolute;
+  top:    0;
+  left:   0;
+  right:  0;
+  bottom: 0;
+
+  background: #0000AA;
+  display: none;
+  background-image: url(sp://spinamp/img/bsod.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+
 }
