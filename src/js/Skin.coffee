@@ -47,8 +47,48 @@ class Spinamp.Skin
       file: 'Main.gif'
       components:
         window:
-          origin: [  0,   0]
-          size:   [275, 116]
+          origin: [   0,   0]
+          size:   [ 275, 116]
+
+    avs:
+      file: 'Avs.gif'
+      components:
+        close_pressed:
+          origin: [ 0, 0]
+          size:   [ 9, 9]
+
+        border_top_left:
+          origin: [ 15,  0]
+          size:   [ 50, 15]
+
+        border_top:
+          origin: [ 66,  0]
+          size:   [ 14, 15]
+
+        border_top_right:
+          origin: [ 81,  0]
+          size:   [ 16, 15]
+
+        border_left:
+          origin: [ 0,  17]
+          size:   [ 7, 170]
+
+        border_right:
+          origin: [ 8,  17]
+          size:   [ 6, 170]
+
+        border_bottom_left:
+          origin: [ 15, 16]
+          size:   [ 50,  5]
+
+        border_bottom:
+          origin: [ 66, 16]
+          size:   [ 14,  5]
+
+        border_bottom_right:
+          origin: [ 81, 16]
+          size:   [ 16,  5]
+
 
     buttons:
       file: 'Cbuttons.gif'
