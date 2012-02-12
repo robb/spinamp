@@ -36,5 +36,20 @@ $ ->
 
     updatePlayer()
 
+    $('.window').bind 'mousedown', (event) ->
+      x = event.originalEvent.pageX - parseInt $(@).css('left')
+      y = event.originalEvent.pageY - parseInt $(@).css('top')
+
+      window = @
+
+      $(document).bind 'mousemove', moveWindow = (event) ->
+        $(window).css
+          top:  event.originalEvent.pageY - y
+          left: event.originalEvent.pageX - x
+
+      $(document).bind 'mouseup', releaseWindow = ->
+        $(document).unbind 'mousemove', moveWindow
+        $(document).unbind 'mouseup',   releaseWindow
+
 
   console.log Spinamp

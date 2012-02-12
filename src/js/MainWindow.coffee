@@ -2,6 +2,8 @@ class Spinamp.MainWindow
   constructor: (@el, @skin, callback) ->
     # Set Main window background
     @el.css
+      top:  100
+      left: 100
       backgroundImage: 'url(' + @skin.get('main', 'window').toDataURL() + ')'
 
     # Load buttons

@@ -7,8 +7,8 @@ class Spinamp.VisualizationWindow
       position: 'absolute'
       width:    WIDTH
       height:   HEIGHT
-
-      top:      202
+      top:      215
+      left:     100
 
     @el.append @topLeft     = $ '<div></div>'
     @el.append @top         = $ '<div></div>'
