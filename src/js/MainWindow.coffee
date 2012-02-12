@@ -65,8 +65,10 @@ class Spinamp.MainWindow
       # Set up the title text view
       @titleView = new Spinamp.TextView @el.find('#title')
 
-      Spinamp.Spotify.Player.observe Spinamp.Spotify.ChangeEvent, updateTitle = =>
+      Spinamp.Spotify.Player.observe Spinamp.Spotify.ChangeEvent, updatePlayer = =>
+        @spectrogram.draw()
+
         track = Spinamp.Spotify.Player.track
         @titleView.text = "#{track.artists[0].name} - #{track.name}"
 
-      updateTitle()
+      updatePlayer()
