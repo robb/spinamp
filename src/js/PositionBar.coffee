@@ -1,6 +1,6 @@
 class Spinamp.PositionBar
   constructor: (@el, @skin) ->
-    @knob        = @el.find('#knob')
+    @knob    = @el.find('#knob')
 
     state    = off
     Object.defineProperty this, 'state',

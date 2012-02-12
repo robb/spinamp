@@ -5,3 +5,4 @@ Spinamp.Spotify =
   Models:      models
   Player:      models.player
   ChangeEvent: models.EVENT.CHANGE
+  TrackPlayer: sp.trackPlayer

@@ -40,6 +40,13 @@ class Spinamp.MainWindow
         Spinamp.Spotify.Player.next()
 
       # Set up progress bar
+      @spectrogram = new Spinamp.SpectrogramView @el.find('#spectrogram'), @skin
+
+      # Overserve FFT event
+      Spinamp.Spotify.TrackPlayer.addEventListener 'playerAudioLevelsChanged', (event) =>
+        @spectrogram.draw event.data
+
+      # Set up progress bar
       @progressBar = new Spinamp.PositionBar @el.find('#progress-bar'), @skin
 
       # Poll player position
