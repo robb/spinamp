@@ -1,5 +1,7 @@
-class Spinamp.TextView
+class Spinamp.TextView extends Spinamp.Widget
   constructor: (@el, @skin) ->
+    super @el
+
     @el.append @inner = $ '<span></span>'
 
     text = ''

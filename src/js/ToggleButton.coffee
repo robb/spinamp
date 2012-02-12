@@ -1,5 +1,7 @@
-class Spinamp.ToggleButton
+class Spinamp.ToggleButton extends Spinamp.Widget
   constructor: (@el, @skin, name) ->
+    super @el
+
     down  = no
     state = off
 

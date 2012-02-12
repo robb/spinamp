@@ -20,10 +20,33 @@ class Spinamp.SpectrogramView
       '#30AD15',
       '#30AD15',
     ]
+
+    @el.css
+      position: 'absolute'
+
     @canvas  = @el.get(0)
-    @canvas.width  = parseInt @el.css 'width'
-    @canvas.height = parseInt @el.css 'height'
     @context = @canvas.getContext '2d'
+
+    Object.defineProperty this, 'origin',
+      get: -> origin
+      set: (newOrigin) ->
+        origin = newOrigin
+
+        @el.css
+          left: origin?.x or 0
+          top:  origin?.y or 0
+
+    Object.defineProperty this, 'size',
+      get: -> size
+      set: (newSize) =>
+        size = newSize
+
+        @canvas.width  = size.width
+        @canvas.height = size.height
+
+        @el.css
+          width:  size?.width or 0
+          height: size?.height or 0
 
     @context.fillStyle = 'white'
 

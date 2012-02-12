@@ -1,5 +1,7 @@
-class Spinamp.Button
+class Spinamp.Button extends Spinamp.Widget
   constructor: (@el, @skin, name) ->
+    super @el
+
     down = no
 
     Object.defineProperty this, 'down',

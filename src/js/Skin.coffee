@@ -163,6 +163,26 @@ class Spinamp.Skin
           origin: [90,  0]
           size:   [ 9, 13]
 
+    monoster:
+      file: 'Monoster.gif'
+      components:
+        stereo_on:
+          origin: [ 0,  0]
+          size:   [29, 12]
+
+        stereo_off:
+          origin: [ 0, 12]
+          size:   [29, 12]
+
+        mono_on:
+          origin: [29,  0]
+          size:   [29, 12]
+
+        mono_off:
+          origin: [29, 12]
+          size:   [29, 12]
+
+
     shufflerep:
       file: 'Shufrep.gif'
       components:

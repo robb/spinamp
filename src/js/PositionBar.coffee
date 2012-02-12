@@ -1,6 +1,12 @@
-class Spinamp.PositionBar
+class Spinamp.PositionBar extends Spinamp.Widget
   constructor: (@el, @skin) ->
+    super @el
+
     @knob    = @el.find('#knob')
+    @knob.css
+      position: 'absolute'
+      width:    28
+      height:   10
 
     state    = off
     Object.defineProperty this, 'state',
@@ -13,13 +19,13 @@ class Spinamp.PositionBar
           @knob.css 'backgroundImage',
                     'url(' + @skin.get('posbar', 'knob').toDataURL() + ')'
 
-    progressBarWidth = parseInt @el.css('width')
-    knobWidth        = parseInt @knob.css('width')
-
     position = undefined
     Object.defineProperty this, 'position',
       get: -> position
       set: (newPosition) ->
+        progressBarWidth = parseInt @el.css('width')
+        knobWidth        = parseInt @knob.css('width')
+
         unless (position = newPosition)?
           @knob.css
             display: 'none'
