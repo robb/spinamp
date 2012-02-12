@@ -1,5 +1,5 @@
 $ ->
-  skin = new Spinamp.Skin 'default', =>
+  skin = new Spinamp.Skin 'moo', =>
     main = new Spinamp.MainWindow          $('#main'), skin
     avs  = new Spinamp.VisualizationWindow $('#avs'),  skin
 

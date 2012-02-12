@@ -30,14 +30,14 @@ class Spinamp.MainWindow
     @spectrogram = new Spinamp.SpectrogramView @el.find('#spectrogram'), @skin
     @progressBar = new Spinamp.PositionBar @el.find('#progress-bar'), @skin
     @timeView    = new Spinamp.TimeView    @el.find('#time-view'),    @skin
-    @titleView   = new Spinamp.TextView @el.find('#title')
+    @titleView   = new Spinamp.TextView @el.find('#title'), @skin
 
-    @kbpsLabel        = new Spinamp.TextView @el.find('#kbps')
+    @kbpsLabel        = new Spinamp.TextView @el.find('#kbps'), @skin
     @kbpsLabel.size   = {width: 20, height: 11}
     @kbpsLabel.origin = {x: 110, y: 41}
     @kbpsLabel.text   = '192'
 
-    @khzLabel        = new Spinamp.TextView @el.find('#khz')
+    @khzLabel        = new Spinamp.TextView @el.find('#khz'), @skin
     @khzLabel.size   = {width: 20, height: 11}
     @khzLabel.origin = {x: 155, y: 41}
     @khzLabel.text   = '44'

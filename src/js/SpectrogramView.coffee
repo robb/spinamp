@@ -1,25 +1,48 @@
 class Spinamp.SpectrogramView
   constructor: (@el, @skin) ->
     @peakColor = 0x9393A3
-    @meters = [
-      # bright red
-      '#CF6D29',
-      '#CF6D29',
-      '#CF6D29',
-      '#CF6D29',
-      # yellow
-      '#E0CD30',
-      '#E0CD30',
-      '#E0CD30',
-      '#E0CD30',
-      '#E0CD30',
-      # green
-      '#30AD15',
-      '#30AD15',
-      '#30AD15',
-      '#30AD15',
-      '#30AD15',
-    ]
+
+    if @skin.name is 'moo'
+      @backgroundColor = "#C0C2A3"
+
+    @meters =
+      if @skin.name is 'default'
+        [
+          # bright red
+          '#CF6D29',
+          '#CF6D29',
+          '#CF6D29',
+          '#CF6D29',
+          # yellow
+          '#E0CD30',
+          '#E0CD30',
+          '#E0CD30',
+          '#E0CD30',
+          '#E0CD30',
+          # green
+          '#30AD15',
+          '#30AD15',
+          '#30AD15',
+          '#30AD15',
+          '#30AD15',
+        ]
+      else
+        [
+          '#000000',
+          '#000000',
+          '#000000',
+          '#000000',
+          '#000000',
+          '#000000',
+          '#000000',
+          '#000000',
+          '#000000',
+          '#000000',
+          '#000000',
+          '#000000',
+          '#000000',
+          '#000000',
+        ]
 
     @el.css
       position: 'absolute'
@@ -61,7 +84,11 @@ class Spinamp.SpectrogramView
         gradientContext.fillRect 0, index, 3, 1
 
   draw: (levels) ->
-    @context.clearRect 0, 0, @canvas.width, @canvas.height
+    if @backgroundColor
+      @context.fillStyle = @backgroundColor
+      @context.fillRect 0, 0, @canvas.width, @canvas.height
+    else
+      @context.clearRect 0, 0, @canvas.width, @canvas.height
 
     return unless levels
 
